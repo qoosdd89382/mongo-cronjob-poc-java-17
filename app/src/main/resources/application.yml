@@ -1,0 +1,13 @@
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: test_db
+      authentication-database: admin
+#      username: sample-username
+      username: username
+#      password: sample-password
+      password: password
+#      auto-index-creation: true
+#      field-naming-strategy: org.springframework.data.mapping.model.CamelCaseAbbreviatingFieldNamingStrategy

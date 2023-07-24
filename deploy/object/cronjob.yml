@@ -1,0 +1,36 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: mongo-app
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: mongo-app
+            image: qoosdd89382/mongo-app
+            imagePullPolicy: Always
+            env:
+            - name: SECRET_MONGODB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-secret
+                  key: mongo-root-username
+            - name: SECRET_MONGODB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-secret
+                  key: mongo-root-password
+            volumeMounts:
+            - mountPath: /app/config/application.yml
+              name: mongo-app-config
+              readOnly: true
+              subPath: application.yml
+          volumes:
+          - name: mongo-app-config
+            configMap:
+              defaultMode: 420
+              name: mongo-app-configmap
+          restartPolicy: OnFailure
