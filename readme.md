@@ -6,13 +6,13 @@ docker run -it --rm --name my-maven-project -v ~/.m2:/root/.m2 -v $(pwd):/app ma
 # image build
 
 ```
-docker build . -t qoosdd89382/mongo-app
+docker build . -t {dockerhub repo}/mongo-app
 ```
 
 # image push
 
 ```
-docker push qoosdd89382/mongo-app
+docker push {dockerhub repo}/mongo-app
 ```
 
 # deploy on k8s
