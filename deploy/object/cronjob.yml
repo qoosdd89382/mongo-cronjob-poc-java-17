@@ -10,7 +10,7 @@ spec:
         spec:
           containers:
           - name: mongo-app
-            image: qoosdd89382/mongo-app
+            image: {dockerhub repo}/mongo-app
             imagePullPolicy: Always
             env:
             - name: SECRET_MONGODB_USERNAME
